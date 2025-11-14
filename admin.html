@@ -217,18 +217,18 @@ F001,Dr. xxx,pass123,Faculty,Hall-1,FN`;
     }
 
     // Upload sheets (same logic using FileReader + postData)
-    async function uploadSheet(inputId, functionName) {
-      const fileInput = document.getElementById(inputId);
-      const file = fileInput.files[0];
-      if (!file) return alert("Please select a file before uploading!");
-      const reader = new FileReader();
-      reader.onload = async e => {
-        await postData(functionName, { fileData: e.target.result, fileName: file.name });
-        document.getElementById("uploadStatus").innerHTML = `${file.name} uploaded successfully.`;
-        if (functionName === "uploadStudentSheet") populateDeptDropdown();
-      };
-      reader.readAsDataURL(file);
-    }
+  async function uploadSheet(inputId, functionName) {
+  const fileInput = document.getElementById(inputId);
+  const file = fileInput.files[0];
+  if (!file) return alert("Please select a file before uploading!");
+  const reader = new FileReader();
+  reader.onload = async e => {
+    await postData(functionName, { fileData: e.target.result, fileName: file.name });
+    document.getElementById("uploadStatus").innerHTML = `${file.name} uploaded successfully.`;
+    if (functionName === "uploadStudentSheet") populateDeptDropdown();
+  };
+  reader.readAsDataURL(file);
+}
 
     // Populate department dropdown (preserve logic)
     async function populateDeptDropdown() {
@@ -674,3 +674,4 @@ async function downloadTotalDeptReportCSV() {
   </script>
 </body>
 </html>
+
