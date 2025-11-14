@@ -217,8 +217,8 @@ const venue = localStorage.getItem("venue");
 const facultyName = localStorage.getItem("faculty_name");
 const batch = localStorage.getItem("batch");
 
-const level1Marks = { "Excellent":10,"Good":7.5,"Average":5,"Poor":2.5 };
-const level2Marks = { "Excellent":30,"Good":22.5,"Average":15, "Poor":7.5 };
+const level1Marks = { "Excellent(10)":10,"Good(7.5)":7.5,"Average(5)":5,"Poor(2.5)":2.5 };
+const level2Marks = { "Excellent(30)":30,"Good(22.5)":22.5,"Average(15)":15, "Poor(7.5)":7.5 };
 
 let students = [], existingMarks = [], locked = false;
 
@@ -288,12 +288,12 @@ function createRow(team_id, student_id, student_name, dept, title) {
     <td data-label="Student Name"><i class="bi bi-person-circle"></i> ${student_name}</td>
     <td data-label="Department">${dept}</td>
     <td data-label="Title"><i class="bi bi-cpu"></i> ${title}</td>
-    <td data-label="Self-Introduction (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Presentaion (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Content (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Queries (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Confidence (30)"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Communication (30)"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Self-Introduction (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent(10)</option><option>Good(7.5)</option><option>Average(5)</option><option>Poor(2.5)</option></select></td>
+    <td data-label="Presentaion (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent(10)</option><option>Good(7.5)</option><option>Average(5)</option><option>Poor(2.5)</option></select></td>
+    <td data-label="Content (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent(10)</option><option>Good(7.5)</option><option>Average(5)</option><option>Poor(2.5)</option></select></td>
+    <td data-label="Queries (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent(10)</option><option>Good(7.5)</option><option>Average(5)</option><option>Poor(2.5)</option></select></td>
+    <td data-label="Confidence (30)"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent(30)</option><option>Good(22.5)</option><option>Average(15)</option><option>Poor(7.5)</option></select></td>
+    <td data-label="Communication (30)"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent(30)</option><option>Good(22.5)</option><option>Average(15)</option><option>Poor(7.5)</option></select></td>
     <td data-label="Total"><span class="badge bg-success total fs-6">0</span></td>
     <td data-label="Action"><button class="btn"><i class="bi bi-save2"></i> Save</button></td>
   `;
@@ -407,3 +407,4 @@ async function saveMarks(row, team_id, student_id, btn) {
 </body>
 
 </html>
+
