@@ -318,7 +318,7 @@
         m.LevelII_Communication || 0, m.Total || 0
       ]);
 
-      const headerHeight = 150;
+      const headerHeight = 130;
 
       doc.autoTable({
         head, body,
@@ -335,11 +335,25 @@
         },
       });
 
-      const finalY = doc.lastAutoTable.finalY + 60;
-      doc.setFont("times", "bold");
-      doc.text("Venue Incharge Signature", pageWidth - 60, finalY + 80, { align: "right" });
-      doc.setFont("times", "normal");
-      doc.text(`Generated on: ${generatedDate}`, 630, pageHeight - 150);
+      const finalY = doc.lastAutoTable.finalY + 30;
+const sigY = finalY + 60;
+
+// Footer - generated time
+doc.setFont("times", "normal");
+doc.text(`Generated on: ${generatedDate}`, 625, finalY);
+
+// If signature goes beyond the page → add new page
+if (sigY > pageHeight - 40) {
+    doc.addPage();
+    doc.setFont("times", "bold");
+    doc.text("Venue Incharge Signature", pageWidth - 60, 40, { align: "right" });
+    doc.text("Faculty Signature", pageWidth - 660, 40, { align: "right" });
+} else {
+    doc.setFont("times", "bold");
+    doc.text("Venue Incharge Signature", pageWidth - 60, sigY, { align: "right" });
+    doc.text("Faculty 1 Signature", pageWidth - 660, 40, { align: "right" });
+}
+
 
       doc.save(`${venue}_${batch}_Seminar_Report.pdf`);
     }
