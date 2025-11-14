@@ -170,7 +170,7 @@ width: 100%;
 </head>
 
 <body onload="initFaculty()">
-  <h2><i class="bi bi-clipboard2-check"></i> Oanel - Mark Entry. 
+  <h2><i class="bi bi-clipboard2-check"></i> Panel - Mark Entry
 </h2>
 
 
@@ -199,12 +199,12 @@ width: 100%;
         <th rowspan="2">Action</th>
       </tr>
       <tr>
-        <th><i class="bi bi-bullseye"></i> Self-Introduction</th>
-        <th><i class="bi bi-gear"></i> Presentation</th>
-        <th><i class="bi bi-lightbulb"></i> Content</th>
-        <th><i class="bi bi-question-circle"></i> Queries</th>
-        <th><i class="bi bi-emoji-laughing"></i> Confidence</th>
-        <th><i class="bi bi-chat-dots"></i> Communication</th>
+        <th><i class="bi bi-bullseye"></i> Self-Introduction (10)</th>
+        <th><i class="bi bi-gear"></i> Presentation (10)</th>
+        <th><i class="bi bi-lightbulb"></i> Content (10)</th>
+        <th><i class="bi bi-question-circle"></i> Queries (10)</th>
+        <th><i class="bi bi-emoji-laughing"></i> Confidence (30)</th>
+        <th><i class="bi bi-chat-dots"></i> Communication (30)</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -288,12 +288,12 @@ function createRow(team_id, student_id, student_name, dept, title) {
     <td data-label="Student Name"><i class="bi bi-person-circle"></i> ${student_name}</td>
     <td data-label="Department">${dept}</td>
     <td data-label="Title"><i class="bi bi-cpu"></i> ${title}</td>
-    <td data-label="Self-Introduction"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Presentaion"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Content"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Queries"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Confidence"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
-    <td data-label="Communication"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Self-Introduction (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Presentaion (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Content (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Queries (10)"><select class="lvl1 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Confidence (30)"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
+    <td data-label="Communication (30)"><select class="lvl2 form-select form-select-sm"><option>---</option><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select></td>
     <td data-label="Total"><span class="badge bg-success total fs-6">0</span></td>
     <td data-label="Action"><button class="btn"><i class="bi bi-save2"></i> Save</button></td>
   `;
@@ -407,4 +407,3 @@ async function saveMarks(row, team_id, student_id, btn) {
 </body>
 
 </html>
-
