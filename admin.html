@@ -504,7 +504,7 @@ async function downloadTotalDeptReportCSV() {
   const rows = Object.values(grouped).map((s) => {
     const mark1 = s.Marks[0] || 0;
     const mark2 = s.Marks[1] || 0;
-    const avg = mark1 === 0 && mark2 === 0 ? "Absent" : Math.ceil((mark1 + mark2) / 2);
+    const avg = mark1 === 0 && mark2 === 0 ? "Absent" : (mark1 + mark2) / 2);
     return [s.Student_ID, s.Student_Name, s.Dept, mark1, mark2, avg];
   });
 
