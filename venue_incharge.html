@@ -376,7 +376,7 @@ if (sigY > pageHeight - 40) {
     doc.text("Venue Incharge Signature", pageWidth - 60, sigY, { align: "right" });
     doc.text("Faculty Signature", pageWidth - 660, 320, { align: "right" });
 }
-
+addPageNumbers(doc);
 
       doc.save(`${venue}_${batch}_Seminar_Report.pdf`);
     }
