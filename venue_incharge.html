@@ -211,7 +211,12 @@
         window.location.href = "index.html";
         return;
       }
-    function addPageNumbers(doc) {
+    
+      document.getElementById("welcome").innerHTML =
+        `Welcome <b>${facultyName}</b> — Role: <b>${role}</b> — Venue: <b>${venue}</b>`;
+    }
+
+function addPageNumbers(doc) {
   const pageCount = doc.internal.getNumberOfPages();
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -228,9 +233,6 @@
     );
   }
 }
-      document.getElementById("welcome").innerHTML =
-        `Welcome <b>${facultyName}</b> — Role: <b>${role}</b> — Venue: <b>${venue}</b>`;
-    }
 
     async function fetchVenueMarks() {
       const batch = document.getElementById("batchSelect").value;
@@ -376,7 +378,7 @@ if (sigY > pageHeight - 40) {
     doc.text("Venue Incharge Signature", pageWidth - 60, sigY, { align: "right" });
     doc.text("Faculty Signature", pageWidth - 660, 320, { align: "right" });
 }
-
+addPageNumbers(doc);
 
       doc.save(`${venue}_${batch}_Seminar_Report.pdf`);
     }
