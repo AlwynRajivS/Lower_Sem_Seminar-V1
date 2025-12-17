@@ -144,6 +144,14 @@
     // Keep normalize helper unchanged
     const normalize = v => String(v || "").trim().toLowerCase();
 
+    function sortByStudentID(arr) {
+  return arr.sort((a, b) => {
+    const idA = (a.Student_ID || "").toString().toLowerCase();
+    const idB = (b.Student_ID || "").toString().toLowerCase();
+    return idA.localeCompare(idB, undefined, { numeric: true });
+  });
+}
+
     function addPageNumbers(doc) {
   const pageCount = doc.internal.getNumberOfPages();
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -467,16 +475,17 @@ async function downloadTotalDeptReportCSV() {
   const dept = document.getElementById("deptSelect").value;
   const batch = document.getElementById("reportBatch").value;
 
-  // Fetch marks data from backend
+  // Fetch marks data
   const marksResp = await postData("getMarks", { batch });
   const marks = Array.isArray(marksResp) ? marksResp : marksResp.data || [];
 
-  // Filter department-wise
+  // Filter by department
   const filtered =
     dept === "ALL"
       ? marks
       : marks.filter(
-          (m) => (m.Dept || "").trim().toLowerCase() === dept.trim().toLowerCase()
+          (m) =>
+            (m.Dept || "").trim().toLowerCase() === dept.trim().toLowerCase()
         );
 
   if (!filtered.length) {
@@ -489,6 +498,7 @@ async function downloadTotalDeptReportCSV() {
   filtered.forEach((m) => {
     const sid = (m.Student_ID || "").trim();
     if (!sid) return;
+
     if (!grouped[sid]) {
       grouped[sid] = {
         Student_ID: sid,
@@ -501,17 +511,47 @@ async function downloadTotalDeptReportCSV() {
   });
 
   // Prepare rows
-  const rows = Object.values(grouped).map((s) => {
+  let rows = Object.values(grouped).map((s) => {
     const mark1 = s.Marks[0] || 0;
     const mark2 = s.Marks[1] || 0;
-    const avg = mark1 === 0 && mark2 === 0 ? "Absent" : (mark1 + mark2) / 2;
-    return [s.Student_ID, s.Student_Name, s.Dept, mark1, mark2, avg];
+    const avg =
+      mark1 === 0 && mark2 === 0
+        ? "Absent"
+        : (mark1 + mark2) / 2;
+
+    return [
+      s.Student_ID,
+      s.Student_Name,
+      s.Dept,
+      mark1,
+      mark2,
+      avg,
+    ];
   });
 
-  // Create CSV content
-  const header = ["Student_ID", "Student_Name", "Dept", "Mark1", "Mark2", "Average"];
+  // 🔽 SORT BY STUDENT ID
+  rows.sort((a, b) =>
+    a[0].toLowerCase().localeCompare(b[0].toLowerCase(), undefined, {
+      numeric: true,
+    })
+  );
+
+  // CSV Header
+  const header = [
+    "Student_ID",
+    "Student_Name",
+    "Dept",
+    "Mark1",
+    "Mark2",
+    "Average",
+  ];
+
   let csv = header.join(",") + "\n";
-  rows.forEach(r => { csv += r.join(",") + "\n"; });
+
+  // CSV Rows
+  rows.forEach((r) => {
+    csv += r.join(",") + "\n";
+  });
 
   // Download CSV
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
@@ -674,4 +714,3 @@ async function downloadTotalDeptReportCSV() {
   </script>
 </body>
 </html>
-
